@@ -17,7 +17,7 @@
 
 ```bash
 source /opt/ros/jazzy/setup.bash
-export ROS_DOMAIN_ID=16
+export ROS_DOMAIN_ID=45
 ```
 
 ### 2. Запуск симулятора и управления
@@ -46,11 +46,11 @@ ros2 topic hz /turtle1/pose
 
 ```bash
 # Терминал B: остановить teleop (Ctrl+C), затем:
-export ROS_DOMAIN_ID=17
+export ROS_DOMAIN_ID=63
 ros2 run turtlesim turtle_teleop_key
 
 # Терминал C:
-export ROS_DOMAIN_ID=17
+export ROS_DOMAIN_ID=63
 ros2 node list --no-daemon --spin-time 2
 timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once
 ```
@@ -59,11 +59,11 @@ timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once
 
 ```bash
 # Терминал B: остановить teleop (Ctrl+C), затем:
-export ROS_DOMAIN_ID=16
+export ROS_DOMAIN_ID=45
 ros2 run turtlesim turtle_teleop_key
 
 # Терминал C:
-export ROS_DOMAIN_ID=16
+export ROS_DOMAIN_ID=45
 ros2 node list --no-daemon --spin-time 2
 timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once
 ```

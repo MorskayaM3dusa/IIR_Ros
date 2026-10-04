@@ -8,7 +8,7 @@
   },
   "commands": [
     "source /opt/ros/jazzy/setup.bash",
-    "export ROS_DOMAIN_ID=16",
+    "export ROS_DOMAIN_ID=45",
     "ros2 run turtlesim turtlesim_node",
     "ros2 run turtlesim turtle_teleop_key",
     "ros2 node list --no-daemon --spin-time 2",
@@ -17,9 +17,9 @@
     "ros2 topic type /turtle1/pose",
     "ros2 topic echo /turtle1/pose --once",
     "ros2 topic hz /turtle1/pose",
-    "export ROS_DOMAIN_ID=17",
+    "export ROS_DOMAIN_ID=63",
     "timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once",
-    "export ROS_DOMAIN_ID=16",
+    "export ROS_DOMAIN_ID=45",
     "timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once"
   ],
   "tests": [
@@ -61,9 +61,9 @@
     }
   ],
   "defect": {
-    "reproducer": "teleop запущен с ROS_DOMAIN_ID=17, turtlesim с ROS_DOMAIN_ID=16. Команда timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once возвращает exit=124 (timeout), поза не приходит.",
+    "reproducer": "teleop запущен с ROS_DOMAIN_ID=63, turtlesim с ROS_DOMAIN_ID=45. Команда timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once возвращает exit=124 (timeout), поза не приходит.",
     "root_cause": "ROS_DOMAIN_ID определяет область обнаружения участников DDS. Ноды с разными ROS_DOMAIN_ID находятся в разных областях обнаружения и не могут обмениваться данными.",
-    "proof_after": "После запуска teleop с ROS_DOMAIN_ID=16 (тем же доменом, что и turtlesim), команда timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once возвращает exit=0 и выводит позу черепахи."
+    "proof_after": "После запуска teleop с ROS_DOMAIN_ID=45 (тем же доменом, что и turtlesim), команда timeout 5s ros2 topic echo /turtle1/pose turtlesim/msg/Pose --once возвращает exit=0 и выводит позу черепахи."
   },
   "claims": {
     "public_tests_passed": true,

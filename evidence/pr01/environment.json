@@ -4,5 +4,5 @@
   "ros_distro": "jazzy",
   "gazebo_version": "8.15.0",
   "rmw": "rmw_fastrtps_cpp",
-  "domains": [16, 17]
+  "domains": [45, 63]
 }
